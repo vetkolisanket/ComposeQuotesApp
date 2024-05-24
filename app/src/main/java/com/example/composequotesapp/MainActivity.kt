@@ -11,11 +11,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
 import com.example.composequotesapp.screens.QuoteDetail
 import com.example.composequotesapp.screens.QuoteListScreen
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,26 +35,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun App() {
-    if (DataManager.isDataLoaded.value) {
-        if (DataManager.currentPage.value == Pages.LISTING) {
-            QuoteListScreen(data = DataManager.data) {
-                DataManager.switchPages(it)
-            }
-        } else {
-            DataManager.currentQuote?.let { QuoteDetail(quote = it) }
-        }
-        
-    } else {
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier.fillMaxSize()
-        ) {
-            Text(
-                text = "Loading...",
-                style = MaterialTheme.typography.headlineMedium
-            )
-        }
-    }
+    val navController = rememberNavController()
+    QuotesAppNavHost(navController = navController)
 }
 
 enum class Pages {

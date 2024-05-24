@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ComposeQuotesApp</string>
+    <string name="loading">Loading...</string>
+    <string name="unknown">Unknown</string>
 </resources>

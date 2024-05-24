@@ -11,11 +11,18 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.ViewModel
 import com.example.composequotesapp.R
 import com.example.composequotesapp.models.Quote
+import com.example.composequotesapp.ui.QuoteListViewModel
 
 @Composable
-fun QuoteListScreen(data: Array<Quote>, onClick: (quote: Quote) -> Unit) {
+fun QuoteListScreen(
+    viewModel: QuoteListViewModel = hiltViewModel(),
+    onClick: (quote: Quote) -> Unit
+) {
+    val data = viewModel.quoteListState.value
     Column {
         Text(
             text = "Quotes App",
@@ -26,6 +33,6 @@ fun QuoteListScreen(data: Array<Quote>, onClick: (quote: Quote) -> Unit) {
             style = MaterialTheme.typography.headlineMedium,
             fontFamily = FontFamily(Font(R.font.montserrat_semibold))
         )
-        QuoteList(data = data, onClick)
+        QuoteList(data = data.quotes, onClick)
     }
 }

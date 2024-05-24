@@ -23,8 +23,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.composequotesapp.R
 import com.example.composequotesapp.models.Quote
 
 @Composable
@@ -57,14 +59,13 @@ fun QuoteListItem(quote: Quote, onClick: (quote: Quote) -> Unit) {
                 )
                 Box(
                     modifier = Modifier
-                        .background(Color(0xFFEEEEEE))
+                        .background(Color(0xFF111111))
                         .fillMaxWidth(0.4f)
                         .height(1.dp)
                 )
                 Text(
-                    text = quote.author,
+                    text = quote.author ?: stringResource(id = R.string.unknown),
                     style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.Thin,
                     modifier = Modifier.padding(4.dp)
                 )
             }

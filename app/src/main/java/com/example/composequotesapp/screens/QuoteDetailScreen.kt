@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
@@ -75,7 +76,7 @@ fun QuoteDetail(quote: Quote) {
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = quote.author,
+                    text = quote.author ?: stringResource(R.string.unknown),
                     fontFamily = FontFamily(Font(R.font.montserrat_medium)),
                     style = MaterialTheme.typography.bodySmall
                 )
