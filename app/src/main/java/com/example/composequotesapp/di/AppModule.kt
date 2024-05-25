@@ -1,7 +1,7 @@
 package com.example.composequotesapp.di
 
 import android.content.Context
-import com.example.composequotesapp.data.LocalDataSource
+import com.example.composequotesapp.data.source.LocalDataSource
 import com.example.composequotesapp.domain.repository.IQuoteRepository
 import com.example.composequotesapp.domain.use_case.GetQuoteUseCase
 import com.example.composequotesapp.domain.use_case.GetQuotesUseCase

@@ -1,4 +1,4 @@
-package com.example.composequotesapp
+package com.example.composequotesapp.core
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -7,8 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.composequotesapp.models.Quote
-import com.example.composequotesapp.screens.QuoteDetailScreen
-import com.example.composequotesapp.screens.QuoteListScreen
+import com.example.composequotesapp.ui.screens.QuoteDetailScreen
+import com.example.composequotesapp.ui.screens.QuoteListScreen
 
 sealed class Screen(val name: String) {
     data object QuoteList : Screen("quote-list")

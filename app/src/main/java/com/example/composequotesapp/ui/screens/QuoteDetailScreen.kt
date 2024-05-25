@@ -1,4 +1,4 @@
-package com.example.composequotesapp.screens
+package com.example.composequotesapp.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

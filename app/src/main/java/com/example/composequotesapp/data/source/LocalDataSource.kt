@@ -1,15 +1,14 @@
-package com.example.composequotesapp.data
+package com.example.composequotesapp.data.source
 
 import android.content.Context
-import com.example.composequotesapp.QuoteNotFoundException
 import com.example.composequotesapp.models.Quote
+import com.example.composequotesapp.util.QuoteNotFoundException
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(private val context: Context) {

@@ -4,9 +4,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.composequotesapp.asState
 import com.example.composequotesapp.domain.use_case.GetQuoteUseCase
 import com.example.composequotesapp.models.Quote
+import com.example.composequotesapp.util.asState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

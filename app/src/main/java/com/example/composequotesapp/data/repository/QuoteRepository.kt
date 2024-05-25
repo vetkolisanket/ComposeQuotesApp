@@ -1,6 +1,6 @@
 package com.example.composequotesapp.data.repository
 
-import com.example.composequotesapp.data.LocalDataSource
+import com.example.composequotesapp.data.source.LocalDataSource
 import com.example.composequotesapp.domain.repository.IQuoteRepository
 import com.example.composequotesapp.models.Quote
 import kotlinx.coroutines.Dispatchers
