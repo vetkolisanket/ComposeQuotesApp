@@ -3,6 +3,7 @@ package com.example.composequotesapp.di
 import android.content.Context
 import com.example.composequotesapp.data.LocalDataSource
 import com.example.composequotesapp.domain.repository.IQuoteRepository
+import com.example.composequotesapp.domain.use_case.GetQuoteUseCase
 import com.example.composequotesapp.domain.use_case.GetQuotesUseCase
 import dagger.Module
 import dagger.Provides
@@ -22,5 +23,9 @@ object AppModule {
     @Provides
     @Singleton
     fun providesGetQuotesUseCase(repository: IQuoteRepository) = GetQuotesUseCase(repository)
+
+    @Provides
+    @Singleton
+    fun provideGetQuoteUseCase(repository: IQuoteRepository) = GetQuoteUseCase(repository)
 
 }

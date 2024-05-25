@@ -1,6 +1,5 @@
 package com.example.composequotesapp.screens
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -26,18 +25,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.composequotesapp.DataManager
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.composequotesapp.R
-import com.example.composequotesapp.models.Quote
+import com.example.composequotesapp.ui.QuoteDetailViewModel
 
 @Composable
-fun QuoteDetail(quote: Quote) {
-
-    BackHandler {
-        DataManager.switchPages(null)
-    }
+fun QuoteDetailScreen(
+    viewModel: QuoteDetailViewModel = hiltViewModel()
+) {
+    val quote = viewModel.quoteState.value
 
     Box(
         contentAlignment = Alignment.Center,
@@ -52,34 +49,40 @@ fun QuoteDetail(quote: Quote) {
                 )
             )
     ) {
-        Card(
-            elevation = CardDefaults.cardElevation(4.dp),
-            modifier = Modifier.padding(32.dp)
-        ) {
-            Column(
-                verticalArrangement = Arrangement.Center,
-                modifier = Modifier
-//                    .align(Alignment.Center)
-                    .padding(16.dp, 24.dp)
+        if (quote == null) {
+            Text(
+                text = stringResource(id = R.string.loading),
+                style = MaterialTheme.typography.titleLarge
+            )
+        } else {
+            Card(
+                elevation = CardDefaults.cardElevation(4.dp),
+                modifier = Modifier.padding(32.dp)
             ) {
-                Image(
-                    imageVector = Icons.Filled.FormatQuote,
-                    contentDescription = "Quote",
+                Column(
+                    verticalArrangement = Arrangement.Center,
                     modifier = Modifier
-                        .size(80.dp)
-                        .rotate(180F)
-                )
-                Text(
-                    text = quote.text,
-                    fontFamily = FontFamily(Font(R.font.montserrat_medium)),
-                    style = MaterialTheme.typography.headlineMedium
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    text = quote.author ?: stringResource(R.string.unknown),
-                    fontFamily = FontFamily(Font(R.font.montserrat_medium)),
-                    style = MaterialTheme.typography.bodySmall
-                )
+                        .padding(16.dp, 24.dp)
+                ) {
+                    Image(
+                        imageVector = Icons.Filled.FormatQuote,
+                        contentDescription = "Quote",
+                        modifier = Modifier
+                            .size(80.dp)
+                            .rotate(180F)
+                    )
+                    Text(
+                        text = quote.text,
+                        fontFamily = FontFamily(Font(R.font.montserrat_medium)),
+                        style = MaterialTheme.typography.headlineMedium
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        text = quote.author ?: stringResource(R.string.unknown),
+                        fontFamily = FontFamily(Font(R.font.montserrat_medium)),
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
             }
         }
     }
