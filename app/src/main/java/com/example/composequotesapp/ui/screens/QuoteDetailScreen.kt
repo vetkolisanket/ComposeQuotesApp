@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -29,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.composequotesapp.R
 import com.example.composequotesapp.ui.QuoteDetailViewModel
+import com.example.composequotesapp.util.TestTags
 
 @Composable
 fun QuoteDetailScreen(
@@ -57,7 +59,9 @@ fun QuoteDetailScreen(
         } else {
             Card(
                 elevation = CardDefaults.cardElevation(4.dp),
-                modifier = Modifier.padding(32.dp)
+                modifier = Modifier
+                    .padding(32.dp)
+                    .testTag(TestTags.QUOTE_DETAIL_CARD)
             ) {
                 Column(
                     verticalArrangement = Arrangement.Center,
